@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Show</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Add A New Show</h1>
+            <a class='navLink' href="/shows">Home</a>
+        </header>
+        <div class=form >
+            <form action="/shows/create" method='POST'>
+                {% csrf_token %}
+                <div class="formGroup">
+                    <label for="title">Title: </label>
+                    <input class=formInput type="text" name="title">
+                </div>
+                <div class="formGroup">
+                    <label for="network">Network: </label>
+                    <input class=formInput type="text" name="network">
+                </div>
+                <div class="formGroup">
+                    <label for="release_date">Release Date: </label>
+                    <input class=formInput type="date" name="release_date">
+                </div>
+                <div class="formGroup">
+                    <label for="description">Description: </label>
+                    <textarea class=formInput type="text" name="description"></textarea>
+                </div>
+                <button class=formButton>Create</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

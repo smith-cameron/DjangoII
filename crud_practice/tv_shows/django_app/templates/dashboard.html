@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shows</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>All Shows</h1>
+            <a class='navLink' href="/shows/new">Add a New Show</a>
+        </header>
+        {% for show in all_shows %}
+        <div>
+            <p>{{show.title}}</p>
+            <p>{{show.description}}</p>
+            <p>{{show.network}}</p>
+            <p>{{show.release_date}}</p>
+            <p>{{show.created_at}}</p>
+            <a href="/shows/edit/{{show.id}}">Edit</a> |
+            <a href="/shows/{{show.id}}">Display</a> |
+            <a href="/shows/delete/{{show.id}}">Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
