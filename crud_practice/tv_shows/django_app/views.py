@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import Show
+from .models import Show, User
 
 def index(request):
     return redirect("/shows")
@@ -27,6 +27,7 @@ def create(request):
                             network = request.POST["network"], 
                             release_date = request.POST["release_date"], 
                             description = request.POST["description"], 
+                            creator = User.objects.get(id=request.session['user_id'])
                             )
     return redirect("/shows")
 
